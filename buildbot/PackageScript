@@ -80,18 +80,18 @@ job.AddCommand(DestroyPath(os.path.join(AMBuild.outputFolder, 'package')))
 job.AddCommand(CreateFolders(folders))
 
 #Copy Files
-job.AddCommand(CopyFile(os.path.join(AMBuild.sourceFolder, 'pawn', 'tf2items.inc'),
+job.AddCommand(CopyFile(os.path.join(AMBuild.sourceFolder, 'pawn', 'tf2items_improved.inc'),
                         os.path.join('addons', 'sourcemod', 'scripting', 'include')))
 job.AddCommand(CopyFile(os.path.join(AMBuild.sourceFolder, 'pawn', 'tf2items_manager.sp'),
                         os.path.join('addons', 'sourcemod', 'scripting')))
 						
-job.AddCommand(CopyFile(os.path.join(AMBuild.sourceFolder, 'tf2.items.txt'),
+job.AddCommand(CopyFile(os.path.join(AMBuild.sourceFolder, 'tf2.items.improved.txt'),
                         os.path.join('addons', 'sourcemod', 'gamedata')))
 						
 job.AddCommand(CopyFile(os.path.join(AMBuild.sourceFolder, 'tf2items.weapons.example.txt'),
                         os.path.join('addons', 'sourcemod', 'configs')))
 						
-job.AddCommand(CopyFile(os.path.join(AMBuild.sourceFolder, 'tf2items.autoload'),
+job.AddCommand(CopyFile(os.path.join(AMBuild.sourceFolder, 'tf2items_improved.autoload'),
                         os.path.join('addons', 'sourcemod', 'extensions')))
 
 bincopies = []

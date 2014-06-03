@@ -37,12 +37,12 @@
  #include "version.h"
 
 /* Basic information exposed publicly */
-#define SMEXT_CONF_NAME			"TF2Items"
+#define SMEXT_CONF_NAME			"TF2Items Improved"
 #define SMEXT_CONF_DESCRIPTION	"TF2 Item Modifier"
 #define SMEXT_CONF_VERSION		SM_VERSION
-#define SMEXT_CONF_AUTHOR		"Asherkin & AzuiSleet & Damizean"
+#define SMEXT_CONF_AUTHOR		"Asherkin & AzuiSleet & Damizean & Powerlord"
 #define SMEXT_CONF_URL			"http://limetech.org/"
-#define SMEXT_CONF_LOGTAG		"TF2ITEMS"
+#define SMEXT_CONF_LOGTAG		"TF2ITEMSI"
 #define SMEXT_CONF_LICENSE		"GPL"
 #define SMEXT_CONF_DATESTRING	__DATE__
 

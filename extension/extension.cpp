@@ -40,7 +40,8 @@
 
 #define NO_FORCE_QUALITY
 
-#include "extension.hpp"
+#include "extension.h"
+#include "item_is_allowed.h"
 
 TF2Items g_TF2Items;
 
@@ -53,8 +54,8 @@ ICvar *icvar = NULL;
 IServerGameClients *gameclients = NULL;
 IServerGameEnts *gameents = NULL;
 
-ConVar TF2ItemsVersion("tf2items_version", SMEXT_CONF_VERSION, FCVAR_SPONLY|FCVAR_REPLICATED|FCVAR_NOTIFY, "TF2 Items Version");
-ConVar HookTFBot("tf2items_bothook", "1", FCVAR_NONE, "Hook intelligent TF2 bots.");
+ConVar TF2ItemsVersion("tf2items_improved_version", SMEXT_CONF_VERSION, FCVAR_SPONLY|FCVAR_REPLICATED|FCVAR_NOTIFY, "TF2 Items Version");
+ConVar HookTFBot("tf2items_improved_bothook", "1", FCVAR_NONE, "Hook intelligent TF2 bots.");
 
 IGameConfig *g_pGameConf = NULL;
 
@@ -418,6 +419,8 @@ bool TF2Items::SDK_OnLoad(char *error, size_t maxlen, bool late) {
 		g_pSM->LogMessage(myself, "\"GiveNamedItem\" offset = %d", iOffset);
 	}
 
+	sharesys->AddDependency(myself, "bintools.ext", true, true);
+
 	// If it's a late load, there might be the chance there are players already on the server. Just
 	// check for this and try to hook them instead of waiting for the next player. -- Damizean
 	if (late)
@@ -478,6 +481,7 @@ bool TF2Items::SDK_OnLoad(char *error, size_t maxlen, bool late) {
 	// Register natives for Pawn
 	sharesys->AddNatives(myself, g_ExtensionNatives);
 	sharesys->RegisterLibrary(myself, "TF2Items");
+	sharesys->RegisterLibrary(myself, "TF2ItemsImproved");
 
 	// Create handles
 	g_ScriptedItemOverrideHandleType = g_pHandleSys->CreateType("TF2ItemType", &g_ScriptedItemOverrideHandler, 0, NULL, NULL, myself->GetIdentity(), NULL);
@@ -485,6 +489,8 @@ bool TF2Items::SDK_OnLoad(char *error, size_t maxlen, bool late) {
 	// Create forwards
 	g_pForwardGiveItem = g_pForwards->CreateForward("TF2Items_OnGiveNamedItem", ET_Hook, 4, NULL, Param_Cell, Param_String, Param_Cell, Param_CellByRef);
 	g_pForwardGiveItem_Post = g_pForwards->CreateForward("TF2Items_OnGiveNamedItem_Post", ET_Ignore, 6, NULL, Param_Cell, Param_String, Param_Cell, Param_Cell, Param_Cell, Param_Cell);
+	g_pForwardItemIsAllowed = g_pForwards->CreateForward("TF2Items_ItemIsAllowed", ET_Event, 3, NULL, Param_Cell, Param_Cell, Param_CellByRef);
+	g_pForwardItemIsAllowed_Post = g_pForwards->CreateForward("TF2Items_ItemIsAllowed_Post", ET_Ignore, 3, NULL, Param_Cell, Param_Cell, Param_Cell);
 
 	return true;
 }

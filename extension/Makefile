@@ -15,7 +15,7 @@ MMSOURCE18 = ../../sdks/mmsource-1.8
 ### EDIT BELOW FOR OTHER PROJECTS ###
 #####################################
 
-PROJECT = tf2items
+PROJECT = tf2items_improved
 
 #Uncomment for Metamod: Source enabled extension
 USEMETA = true

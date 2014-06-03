@@ -8,7 +8,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #endif
 
 #ifndef SM_GENERATED_BUILD
-#define BINARY_NAME "tf2items.ext.2.ep2v.dll\0"
+#define BINARY_NAME "tf2items_improved.ext.2.ep2v.dll\0"
 #endif
 
 VS_VERSION_INFO VERSIONINFO

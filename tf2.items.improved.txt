@@ -1,0 +1,26 @@
+"Games"
+{
+	"tf"
+	{
+		"Offsets"
+		{
+			"GiveNamedItem"
+			{
+				"windows"	"471"
+				"linux"	"478"
+				"mac"	"478"
+			}
+		}
+
+		"Signatures"
+		{
+			"ItemIsAllowed"
+			{
+				"library"	"server"
+				"windows"	""
+				"linux"		"@_ZN9CTFPlayer13ItemIsAllowedEP13CEconItemView"
+				"mac"		"@_ZN9CTFPlayer13ItemIsAllowedEP13CEconItemView"
+			}
+		}
+	}
+}

@@ -27,6 +27,7 @@
  */
 
 #include "smsdk_ext.hpp"
+#include "CDetour/detours.h"
 
 //#include "iplayerinfo.h"
 //#include "convar.h"
@@ -225,5 +226,7 @@ extern TScriptedItemOverrideTypeHandler g_ScriptedItemOverrideHandler;
 extern sp_nativeinfo_t g_ExtensionNatives[];
 extern IForward *g_pForwardGiveItem;
 extern IForward *g_pForwardGiveItem_Post;
+
+//extern IBinTools *g_pBinTools;
 
 #endif // _INCLUDE_SOURCEMOD_EXTENSION_PROPER_H_

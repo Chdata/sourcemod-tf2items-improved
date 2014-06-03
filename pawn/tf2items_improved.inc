@@ -197,24 +197,46 @@ native Float:TF2Items_GetAttributeValue(Handle:hItem, iSlotIndex);
  * Return Plugin_Changed to override the item to use the configuration of the hItem object.
  * Return Plugin_Continue to keep them intact.
  * Return Plugin_Handled to stop the item being given to the player.
- * Make sure the client gets atleast one weapon.
+ * Make sure the client gets at least one weapon.
  *
  * @param client				Client Index.
  * @param classname				The classname of the entity that will be generated.
  * @param iItemDefinitionIndex	Item definition index.
- * @param hItem					Handle to a TF2Item object wich describes what values will be overriden.
+ * @param hItem					Handle to a TF2Item object which describes what values will be overridden.
  */
 forward Action:TF2Items_OnGiveNamedItem(client, String:classname[], iItemDefinitionIndex, &Handle:hItem);
 
 forward TF2Items_OnGiveNamedItem_Post(client, String:classname[], itemDefinitionIndex, itemLevel, itemQuality, entityIndex);
 
 /**
+ * Called when an item is being checked if it should be blocked.
+ * Return Plugin_Continue 
+ * Return anything higher to use the value of allow instead.
+ *
+ * @param client				Client index.
+ * @param iItemDefinitionIndex	Item Definition index.
+ * @param allow					Whether the item will be allowed or denied.
+ */
+
+forward Action:TF2Items_ItemIsAllowed(client, iItemDefinitionIndex, &bool:allow);
+
+/**
+ * Called when an item has either passed or failed an item is allowed check.
+ *
+ * @param client				Client index.
+ * @param iItemDefinitionIndex	Item Definition index.
+ * @param allow					Whether the item was allowed or denied.
+ */
+forward TF2Items_ItemIsAllowed_Post(client, iItemDefinitionIndex, bool:allow);
+
+
+/**
  * Do not edit below this line!
  */
-public Extension:__ext_tf2items = 
+public Extension:__ext_tf2itemsimproved = 
 {
-	name = "TF2Items",
-	file = "tf2items.ext.2.ep2v",
+	name = "TF2Items Improved",
+	file = "tf2items_improved.ext.2.ep2v",
 	autoload = 0,
 	#if defined REQUIRE_EXTENSIONS
 		required = 1,

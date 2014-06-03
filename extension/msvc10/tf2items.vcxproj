@@ -113,11 +113,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\asm\asm.c" />
+    <ClCompile Include="..\CDetour\detours.cpp" />
     <ClCompile Include="..\extension.cpp" />
+    <ClCompile Include="..\item_is_allowed.cpp" />
     <ClCompile Include="..\sdk\smsdk_ext.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\extension.hpp" />
+    <ClInclude Include="..\asm\asm.h" />
+    <ClInclude Include="..\CDetour\detourhelpers.h" />
+    <ClInclude Include="..\CDetour\detours.h" />
+    <ClInclude Include="..\extension.h" />
+    <ClInclude Include="..\item_is_allowed.h" />
     <ClInclude Include="..\sdk\smsdk_config.hpp" />
     <ClInclude Include="..\sdk\smsdk_ext.hpp" />
   </ItemGroup>

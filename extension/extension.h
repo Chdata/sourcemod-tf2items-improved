@@ -127,7 +127,11 @@ public:
  * @brief Sample implementation of the SDK Extension.
  * Note: Uncomment one of the pre-defined virtual functions in order to use it.
  */
-class TF2Items : public SDKExtension, public IConCommandBaseAccessor
+class TF2Items :
+	public SDKExtension,
+	public IConCommandBaseAccessor,
+	public IPluginsListener
+	//public IClientListener
 {
 public:
 	/**
@@ -193,6 +197,13 @@ public:
 #endif
 public: //IConCommandBaseAccessor
 	bool RegisterConCommandBase(ConCommandBase *pCommand);
+public: //IPluginsListener
+	void OnPluginLoaded(IPlugin *plugin);
+	void OnPluginUnloaded(IPlugin *plugin);
+//public: //IClientListener
+//	void OnClientPutInServer(int client);
+private:
+	bool m_bItemIsAllowedDetourEnabled;
 };
 
 void CSCICopy(CEconItemView *olditem, CEconItemView *newitem);

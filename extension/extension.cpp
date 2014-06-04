@@ -492,6 +492,8 @@ bool TF2Items::SDK_OnLoad(char *error, size_t maxlen, bool late) {
 	g_pForwardItemIsAllowed = g_pForwards->CreateForward("TF2Items_ItemIsAllowed", ET_Event, 3, NULL, Param_Cell, Param_Cell, Param_CellByRef);
 	g_pForwardItemIsAllowed_Post = g_pForwards->CreateForward("TF2Items_ItemIsAllowed_Post", ET_Ignore, 3, NULL, Param_Cell, Param_Cell, Param_Cell);
 
+	InitialiseItemIsAllowedDetour();
+
 	return true;
 }
 
@@ -521,6 +523,10 @@ void TF2Items::SDK_OnUnload()
 
 	g_pForwards->ReleaseForward(g_pForwardGiveItem);
 	g_pForwards->ReleaseForward(g_pForwardGiveItem_Post);
+	g_pForwards->ReleaseForward(g_pForwardItemIsAllowed);
+	g_pForwards->ReleaseForward(g_pForwardItemIsAllowed_Post);
+
+	RemoveItemIsAllowedDetour();
 }
 
 bool TF2Items::SDK_OnMetamodUnload(char *error, size_t maxlen)
